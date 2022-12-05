@@ -1,9 +1,15 @@
-import { PUZZLE_TYPES } from "../utils/constants.mjs";
-import { resetAppElement } from "../utils/display.mjs";
+import { PUZZLE_TYPES } from "./constants.mjs";
+import { resetAppElement } from "./display.mjs";
+import { readTextFile } from "./read-file.mjs";
+
+const PUZZLES = {
+  [PUZZLE_TYPES.EXAMPLE]: readTextFile("./puzzle-example.txt"),
+  [PUZZLE_TYPES.INPUT]: readTextFile("./puzzle-input.txt"),
+};
 
 let puzzleType = PUZZLE_TYPES.EXAMPLE;
 
-export const getPuzzle = (puzzles) => puzzles[puzzleType];
+export const getPuzzle = () => PUZZLES[puzzleType];
 
 export const changePuzzleType = async (day) => {
   puzzleType =

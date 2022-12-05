@@ -1,13 +1,6 @@
 import { sum } from "../utils/arrays.mjs";
-import { PUZZLE_TYPES } from "../utils/constants.mjs";
 import { getAppElement } from "../utils/display.mjs";
-import { readTextFile } from "../utils/read-file.mjs";
 import { getPuzzle } from "../utils/puzzles-loader.mjs";
-
-const PUZZLES = {
-  [PUZZLE_TYPES.EXAMPLE]: readTextFile("./puzzle-example.txt"),
-  [PUZZLE_TYPES.INPUT]: readTextFile("./puzzle-input.txt"),
-};
 
 const foodInventoryDisplay = (value) => {
   const { list: inventory, caloriesSum } = value;
@@ -36,7 +29,7 @@ const foodInventoryDisplay = (value) => {
 };
 
 export default async () => {
-  const puzzle = await getPuzzle(PUZZLES);
+  const puzzle = await getPuzzle();
 
   const listOfElvesCaloriesWithSum = puzzle
     .split("\n\n")
