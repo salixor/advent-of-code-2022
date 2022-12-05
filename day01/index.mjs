@@ -1,3 +1,4 @@
+import { PUZZLE_PARTS } from "../utils/constants.mjs";
 import { sum } from "../utils/arrays.mjs";
 import { getAppElement } from "../utils/display.mjs";
 import { getPuzzle } from "../utils/puzzles-loader.mjs";
@@ -28,7 +29,7 @@ const foodInventoryDisplay = (value) => {
   };
 };
 
-export default async () => {
+const firstPart = async () => {
   const puzzle = await getPuzzle();
 
   const listOfElvesCaloriesWithSum = puzzle
@@ -54,4 +55,10 @@ export default async () => {
       getAppElement().appendChild(topThreeSumElement);
     }
   });
+};
+
+export default {
+  [PUZZLE_PARTS.PART_ONE]: firstPart,
+  [PUZZLE_PARTS.PART_TWO]: firstPart,
+  start: firstPart,
 };

@@ -1,0 +1,74 @@
+div.all-matches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px 50px;
+  margin: 0 0 0 15px;
+}
+
+div.match {
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+}
+
+div.match *:nth-child(1),
+div.match *:nth-child(2) {
+  background: red;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 100%;
+}
+
+div.match *:nth-child(1) {
+  background: rgb(90, 67, 57);
+}
+
+div.match *:nth-child(2) {
+  background: rgb(55, 75, 55);
+}
+
+div.total-score,
+div.match *:nth-child(3),
+div.match *:nth-child(4) {
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, .7);
+  border: 1px solid #fff;
+  border-radius: 3px;
+  text-align: center;
+}
+
+div.match *:nth-child(3) {
+  margin-left: 20px;
+  width: 100px;
+}
+
+div.match.win *:nth-child(3),
+div.match.win *:nth-child(3)+span {
+  color: #0f0;
+}
+
+div.match.draw *:nth-child(3),
+div.match.draw *:nth-child(3)+span {
+  color: #ff0;
+}
+
+div.match.loss *:nth-child(3),
+div.match.loss *:nth-child(3)+span {
+  color: #f00;
+}
+
+div.match *:nth-child(4) {
+  border-radius: 100%;
+  color: black;
+}
+
+div.total-score {
+  font-weight: bold;
+  margin: 25px 0 15px;
+  padding: 10px;
+  top: 10px;
+  left: 15px;
+  text-align: center;
+  position: sticky;
+}
