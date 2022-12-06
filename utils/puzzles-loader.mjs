@@ -2,15 +2,29 @@ import { PUZZLE_TYPES, PUZZLE_PARTS } from "./constants.mjs";
 import { resetAppElement } from "./display.mjs";
 import { readTextFile } from "./read-file.mjs";
 
-const PUZZLES = {
-  [PUZZLE_TYPES.EXAMPLE]: readTextFile("./puzzle-example.txt"),
-  [PUZZLE_TYPES.INPUT]: readTextFile("./puzzle-input.txt"),
+export const getSelectedDay = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get("day");
+};
+
+export const getDayFolder = () => {
+  const day = getSelectedDay();
+  return day ? `./day${day}` : undefined;
+};
+
+const getPuzzles = () => {
+  const dayFolder = getDayFolder();
+  return {
+    [PUZZLE_TYPES.EXAMPLE]: readTextFile(`${dayFolder}/puzzle-example.txt`),
+    [PUZZLE_TYPES.INPUT]: readTextFile(`${dayFolder}/puzzle-input.txt`),
+  };
 };
 
 let puzzleType = PUZZLE_TYPES.EXAMPLE;
 let puzzlePart = PUZZLE_PARTS.PART_ONE;
 
-export const getPuzzle = () => PUZZLES[puzzleType];
+export const getPuzzle = () => getPuzzles()[puzzleType];
 
 export const changePuzzleType = async (day) => {
   puzzleType =

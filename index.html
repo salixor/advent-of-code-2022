@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advent of Code 2022</title>
+
+  <link rel="shortcut icon" href="../favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+
+  <script type="module">
+    import { getSelectedDay, getDayFolder } from './utils/puzzles-loader.mjs';
+    import { changePuzzleType, changePuzzlePart } from '../utils/puzzles-loader.mjs';
+
+    (async () => {
+      const dayFolder = getDayFolder();
+
+      if (dayFolder) {
+        document.getElementById('day-selector').style.display = 'none';
+        document.getElementById('puzzle-buttons').style.display = null;
+
+        let { default: dayPuzzle } = await import(`${dayFolder}/index.mjs`);
+        dayPuzzle.start();
+
+        document.getElementsByTagName('button')[0].addEventListener('click', () => changePuzzleType(dayPuzzle));
+        document.getElementsByTagName('button')[1].addEventListener('click', () => changePuzzlePart(dayPuzzle));
+
+        const headStyle = document.createElement('link')
+        headStyle.setAttribute('rel', 'stylesheet')
+        headStyle.setAttribute('href', `${dayFolder}/day.css`)
+        document.head.append(headStyle)
+        document.title = `Day ${getSelectedDay()} ❄️ Advent of Code 2022`;
+      } else {
+        document.getElementById('day-selector').style.display = null;
+        document.getElementById('puzzle-buttons').style.display = 'none';
+        document.title = `Advent of Code 2022`;
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="puzzle-buttons" style="display: none;">
+    <button>Switch puzzle</button>
+    <button>Switch part</button>
+  </div>
+
+  <div id="app"></div>
+
+  <div id="day-selector">
+    <a href="?day=01" data-complete>Day 01</a>
+    <a href="?day=02" data-complete>Day 02</a>
+    <a href="?day=03" data-complete>Day 03</a>
+    <a href="?day=04">Day 04</a>
+    <a href="?day=05">Day 05</a>
+    <a href="?day=06">Day 06</a>
+    <a href="?day=07">Day 07</a>
+    <a href="?day=08">Day 08</a>
+    <a href="?day=09">Day 09</a>
+    <a href="?day=10">Day 10</a>
+    <a href="?day=11">Day 11</a>
+    <a href="?day=12">Day 12</a>
+    <a href="?day=13">Day 13</a>
+    <a href="?day=14">Day 14</a>
+    <a href="?day=15">Day 15</a>
+    <a href="?day=16">Day 16</a>
+    <a href="?day=17">Day 17</a>
+    <a href="?day=18">Day 18</a>
+    <a href="?day=19">Day 19</a>
+    <a href="?day=20">Day 20</a>
+    <a href="?day=21">Day 21</a>
+    <a href="?day=22">Day 22</a>
+    <a href="?day=23">Day 23</a>
+    <a href="?day=24">Day 24</a>
+    <a href="?day=25">Day 25</a>
+  </div>
+</body>
+
+</html>

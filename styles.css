@@ -4,3 +4,37 @@ body {
   font-family: "Source Code Pro", monospace;
   font-size: 14pt;
 }
+
+div#day-selector {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+div#day-selector a {
+  border-radius: 3px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  background: rgba(119, 119, 165, .05);
+}
+
+div#day-selector a:hover {
+  background: rgba(119, 119, 165, .2);
+  text-decoration: none;
+}
+
+div#day-selector a::before {
+  content: '⭐';
+  margin: 0 10px 0 0;
+}
+
+div#day-selector a:not([data-complete]) {
+  opacity: 0.3;
+  filter: grayscale(1);
+  pointer-events: none;
+  cursor: default;
+}
