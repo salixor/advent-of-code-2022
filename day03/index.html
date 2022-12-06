@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 03</title>
+
+  <link rel="shortcut icon" href="../favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="./day.css">
+
+  <script type="module">
+    import day from './index.mjs';
+    import { changePuzzleType, changePuzzlePart } from '../utils/puzzles-loader.mjs';
+    document.getElementsByTagName('button')[0].addEventListener('click', () => changePuzzleType(day));
+    document.getElementsByTagName('button')[1].addEventListener('click', () => changePuzzlePart(day));
+    day.start();
+  </script>
+</head>
+
+<body>
+  <button>Switch puzzle</button>
+  <button>Switch part</button>
+  <div id="app"></div>
+</body>
+
+</html>

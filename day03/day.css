@@ -1,0 +1,73 @@
+.rucksack {
+  display: flex;
+  margin: 10px 20px 0;
+  padding: 0 0 10px;
+  gap: 25px;
+  justify-content: center;
+  border-bottom: 1px dashed #fff;
+}
+
+.elves-group .rucksack {
+  border-bottom: none;
+  margin: 0;
+}
+
+.elves-group {
+  margin: 10px 20px 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.rucksack:last-of-type,
+.elves-group:last-of-type {
+  border-bottom: none;
+}
+
+.rucksack .compartment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-content: center;
+}
+
+.rucksack .compartment:nth-child(1) {
+  justify-content: end;
+}
+
+.rucksack .compartment:nth-child(2) {
+  justify-content: start;
+}
+
+.total-priority,
+.item,
+.highlighted-item {
+  padding: 2px 4px;
+  background: rgba(0, 0, 0, .5);
+  color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.highlighted-item {
+  font-weight: bold;
+  background: rgba(0, 0, 0, .9);
+  color: #f0f;
+  border-color: #f0f;
+}
+
+.elves-group .highlighted-item {
+  color: #0ff;
+  border-color: #0ff;
+}
+
+.total-priority {
+  font-weight: bold;
+  margin: 25px 0 15px;
+  padding: 10px;
+  top: 10px;
+  left: 15px;
+  text-align: center;
+  position: sticky;
+  color: #fff;
+  border-color: #fff;
+}
