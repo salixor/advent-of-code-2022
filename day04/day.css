@@ -1,0 +1,86 @@
+.all-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 25px;
+  justify-content: space-around;
+}
+
+.pair-of-ranges {
+  display: flex;
+  gap: 0 5px;
+  margin: 10px;
+}
+
+.pair-of-ranges span:nth-child(1)::before,
+.pair-of-ranges span:nth-child(2)::after {
+  content: '+';
+}
+
+.pair-of-ranges span:nth-child(3)::before,
+.pair-of-ranges span:nth-child(4)::after {
+  content: '-';
+}
+
+.pair-of-ranges.a-includes-b {
+  color: pink;
+  font-weight: bold;
+  text-decoration: underline dotted 2px;
+}
+
+.pair-of-ranges.b-includes-a {
+  color: peachpuff;
+  font-weight: bold;
+  text-decoration: overline dotted 2px;
+}
+
+.pair-of-ranges.overlaps {
+  color: turquoise;
+  font-weight: bold;
+  text-decoration: overline underline dotted 2px;
+}
+
+.pair-of-ranges.a-includes-b span:nth-child(1) {
+  order: 2;
+}
+
+.pair-of-ranges.a-includes-b span:nth-child(2) {
+  order: 4;
+}
+
+.pair-of-ranges.a-includes-b span:nth-child(3) {
+  order: 3;
+}
+
+.pair-of-ranges.a-includes-b span:nth-child(4) {
+  order: 1;
+}
+
+.pair-of-ranges.b-includes-a span:nth-child(1) {
+  order: 2;
+}
+
+.pair-of-ranges.b-includes-a span:nth-child(2) {
+  order: 4;
+}
+
+.pair-of-ranges.b-includes-a span:nth-child(3) {
+  order: 1;
+}
+
+.pair-of-ranges.b-includes-a span:nth-child(4) {
+  order: 3;
+}
+
+div.total-element {
+  background: rgba(0, 0, 0, .7);
+  border: 1px solid #fff;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  margin: 25px 0 15px;
+  padding: 10px;
+  top: 10px;
+  left: 15px;
+  text-align: center;
+  position: sticky;
+}
