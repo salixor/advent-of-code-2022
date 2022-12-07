@@ -32,7 +32,12 @@ div#day-selector a::before {
   margin: 0 10px 0 0;
 }
 
-div#day-selector a:not([data-complete]) {
+div#day-selector a[data-progress] {
+  opacity: 1;
+  filter: grayscale(1);
+}
+
+div#day-selector a:not([data-complete]):not([data-progress]) {
   opacity: 0.3;
   filter: grayscale(1);
   pointer-events: none;
