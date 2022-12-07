@@ -1,6 +1,9 @@
 import { PUZZLE_PARTS } from "../utils/constants.mjs";
 import { sum } from "../utils/arrays.mjs";
-import { getAppElement } from "../utils/display.mjs";
+import {
+  getAppElement,
+  displayPuzzleSolutionValue,
+} from "../utils/display.mjs";
 import { getPuzzle } from "../utils/puzzles-loader.mjs";
 
 const MATCH_RESULT = {
@@ -130,16 +133,12 @@ const displayPart = (solver) => async () => {
   const displays = solution.map(matchDisplay);
   const totalScore = sum(solution.map((i) => i.score));
 
-  const totalScoreElement = document.createElement("div");
-  totalScoreElement.className = "total-score";
-  totalScoreElement.innerText = totalScore;
-
   const matchesElement = document.createElement("div");
   matchesElement.className = "all-matches";
 
   displays.forEach((el) => matchesElement.appendChild(el));
 
-  getAppElement().appendChild(totalScoreElement);
+  displayPuzzleSolutionValue(totalScore);
   getAppElement().appendChild(matchesElement);
 };
 

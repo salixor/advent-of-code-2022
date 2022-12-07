@@ -1,12 +1,12 @@
-import { getAppElement } from "../utils/display.mjs";
+import {
+  getAppElement,
+  displayPuzzleSolutionValue,
+} from "../utils/display.mjs";
 
 export const displayPart = (solver) => async () => {
   const [solution, totalConcerned] = await solver();
 
-  const totalElement = document.createElement("div");
-  totalElement.className = "total-element";
-  totalElement.innerText = totalConcerned;
-  getAppElement().appendChild(totalElement);
+  displayPuzzleSolutionValue(totalConcerned);
 
   const allRangesElement = document.createElement("div");
   allRangesElement.className = "all-ranges";

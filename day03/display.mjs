@@ -1,5 +1,8 @@
 import { splitArray } from "../utils/arrays.mjs";
-import { getAppElement } from "../utils/display.mjs";
+import {
+  getAppElement,
+  displayPuzzleSolutionValue,
+} from "../utils/display.mjs";
 
 const makeDisplayForCompartment = (compartment, concernedItem) => {
   const compartmentElement = document.createElement("div");
@@ -45,10 +48,7 @@ export const makeDisplayElvesGroup = (elvesGroup, badge) => {
 export const displayPart = (solver, displayer) => async () => {
   const [storagesForDisplay, itemsToHighlight, totalPriority] = await solver();
 
-  const totalPriorityElement = document.createElement("div");
-  totalPriorityElement.className = "total-priority";
-  totalPriorityElement.innerText = totalPriority;
-  getAppElement().appendChild(totalPriorityElement);
+  displayPuzzleSolutionValue(totalPriority);
 
   storagesForDisplay.forEach((v, index) => {
     const el = displayer(v, itemsToHighlight[index]);

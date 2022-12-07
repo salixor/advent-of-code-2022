@@ -37,7 +37,6 @@
   justify-content: start;
 }
 
-.total-priority,
 .item,
 .highlighted-item {
   padding: 2px 4px;
@@ -58,16 +57,4 @@
 .elves-group .highlighted-item {
   color: #0ff;
   border-color: #0ff;
-}
-
-.total-priority {
-  font-weight: bold;
-  margin: 25px 0 15px;
-  padding: 10px;
-  top: 10px;
-  left: 15px;
-  text-align: center;
-  position: sticky;
-  color: #fff;
-  border-color: #fff;
 }

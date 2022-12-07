@@ -1,6 +1,9 @@
 import { PUZZLE_PARTS } from "../utils/constants.mjs";
 import { sum } from "../utils/arrays.mjs";
-import { getAppElement } from "../utils/display.mjs";
+import {
+  getAppElement,
+  displayPuzzleSolutionValue,
+} from "../utils/display.mjs";
 import { getPuzzle } from "../utils/puzzles-loader.mjs";
 
 const foodInventoryDisplay = (value) => {
@@ -29,36 +32,44 @@ const foodInventoryDisplay = (value) => {
   };
 };
 
-const firstPart = async () => {
-  const puzzle = await getPuzzle();
-
-  const listOfElvesCaloriesWithSum = puzzle
-    .split("\n\n")
-    .map((l) => l.split("\n").map((v) => +v))
-    .map((list) => ({ list, caloriesSum: sum(list) }))
-    .sort((a, b) => b.caloriesSum - a.caloriesSum);
-
-  const inventoryDisplays =
-    listOfElvesCaloriesWithSum.map(foodInventoryDisplay);
+const display = (list) => {
+  const inventoryDisplays = list.map(foodInventoryDisplay);
 
   let currentSum = 0;
   inventoryDisplays.forEach(({ caloriesSum, inventoryElement }, index) => {
     currentSum += caloriesSum;
-    if (index === 0) inventoryElement.classList.add("sum-max");
-    else if (index < 3) inventoryElement.classList.add("sum-top-three");
+    if (index < 3) inventoryElement.classList.add("sum-top-three");
     getAppElement().appendChild(inventoryElement);
-
-    if (index === 2) {
-      const topThreeSumElement = document.createElement("div");
-      topThreeSumElement.className = "top-three-sum-value";
-      topThreeSumElement.innerText = currentSum;
-      getAppElement().appendChild(topThreeSumElement);
-    }
   });
+};
+
+const getListOfElvesCaloriesWithSum = async () => {
+  return (await getPuzzle())
+    .split("\n\n")
+    .map((l) => l.split("\n").map((v) => +v))
+    .map((list) => ({ list, caloriesSum: sum(list) }))
+    .sort((a, b) => b.caloriesSum - a.caloriesSum);
+};
+
+const firstPart = async () => {
+  const elvesCaloriesWithSum = await getListOfElvesCaloriesWithSum();
+  const topSum = elvesCaloriesWithSum[0].caloriesSum;
+
+  displayPuzzleSolutionValue(topSum);
+  display(elvesCaloriesWithSum);
+};
+
+const secondPart = async () => {
+  const elvesCaloriesWithSum = await getListOfElvesCaloriesWithSum();
+  const topThree = elvesCaloriesWithSum.slice(0, 3);
+  const topThreeCaloriesSum = sum(topThree.map((s) => s.caloriesSum));
+
+  displayPuzzleSolutionValue(topThreeCaloriesSum);
+  display(elvesCaloriesWithSum);
 };
 
 export default {
   [PUZZLE_PARTS.PART_ONE]: firstPart,
-  [PUZZLE_PARTS.PART_TWO]: firstPart,
+  [PUZZLE_PARTS.PART_TWO]: secondPart,
   start: firstPart,
 };

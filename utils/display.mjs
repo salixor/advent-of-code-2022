@@ -5,3 +5,10 @@ export const getAppElement = () => {
 export const resetAppElement = () => {
   getAppElement().innerHTML = null;
 };
+
+export const displayPuzzleSolutionValue = (total) => {
+  const totalElement = document.createElement("div");
+  totalElement.className = "total-element";
+  totalElement.innerText = total;
+  getAppElement().appendChild(totalElement);
+};

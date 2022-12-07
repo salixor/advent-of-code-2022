@@ -70,17 +70,3 @@
 .pair-of-ranges.b-includes-a span:nth-child(4) {
   order: 3;
 }
-
-div.total-element {
-  background: rgba(0, 0, 0, .7);
-  border: 1px solid #fff;
-  border-radius: 3px;
-  text-align: center;
-  font-weight: bold;
-  margin: 25px 0 15px;
-  padding: 10px;
-  top: 10px;
-  left: 15px;
-  text-align: center;
-  position: sticky;
-}
